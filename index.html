@@ -26,7 +26,147 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <h1>Ella's Cafe</h1>
+    <h1 class="display-4 text-center mt-3">
+      <img src="assets/images/cafe.png" width="80" />
+      <span class="badge section-badge">Welcome to Ella's Cafe</span>
+    </h1>
+
+    <div class="container mt-5">
+      <div class="row align-items-start">
+        <!-- LEFT COLUMN -->
+        <div class="col-lg-8">
+          <h3 class="display-6 text-center">
+            <span class="badge section-badge">Create Order</span>
+          </h3>
+          <div class="card shadow-sm p-4 mb-5">
+            <form id="create-order-form">
+              <p class="text-muted mb-4 text-center">
+                Click items below to add them to your order
+              </p>
+              <div class="row g-3">
+                <div class="col-md-4">
+                  <button
+                    type="button"
+                    class="menu-item"
+                    data-name="Latte"
+                    data-price="4.50"
+                  >
+                    <img src="./assets/images/latte.png" alt="Latte" />
+                    <span>Latte</span>
+                    <strong>$4.50</strong>
+                  </button>
+                </div>
+
+                <div class="col-md-4">
+                  <button
+                    type="button"
+                    class="menu-item"
+                    data-name="Cappuccino"
+                    data-price="5.25"
+                  >
+                    <img
+                      src="./assets/images/cappuccino.png"
+                      alt="Cappuccino"
+                    />
+                    <span>Cappuccino</span>
+                    <strong>$5.25</strong>
+                  </button>
+                </div>
+
+                <div class="col-md-4">
+                  <button
+                    type="button"
+                    class="menu-item"
+                    data-name="Espresso"
+                    data-price="3.75"
+                  >
+                    <img src="./assets/images/espresso.png" alt="Espresso" />
+                    <span>Espresso</span>
+                    <strong>$3.75</strong>
+                  </button>
+                </div>
+
+                <div class="col-md-4">
+                  <button
+                    type="button"
+                    class="menu-item"
+                    data-name="Cookie"
+                    data-price="2.50"
+                  >
+                    <img src="./assets/images/cookie.png" alt="Cookie" />
+                    <span>Cookie</span>
+                    <strong>$2.50</strong>
+                  </button>
+                </div>
+
+                <div class="col-md-4">
+                  <button
+                    type="button"
+                    class="menu-item"
+                    data-name="Muffin"
+                    data-price="3.25"
+                  >
+                    <img src="./assets/images/muffin.png" alt="Muffin" />
+                    <span>Muffin</span>
+                    <strong>$3.25</strong>
+                  </button>
+                </div>
+
+                <div class="col-md-4">
+                  <button
+                    type="button"
+                    class="menu-item"
+                    data-name="Cupcake"
+                    data-price="4.50"
+                  >
+                    <img src="./assets/images/cupcake.png" alt="Cupcake" />
+                    <span>Cupcake</span>
+                    <strong>$4.50</strong>
+                  </button>
+                </div>
+              </div>
+
+              <hr />
+
+              <h4>Order Summary</h4>
+              <ul id="order-summary" class="list-group mb-3"></ul>
+
+              <h5>Food Items: $<span id="order-total">0.00</span></h5>
+              <h5>Delivery: $4.00</h5>
+              <h5>Total: $<span id="delivery-total">0.00</span></h5>
+
+              <div class="mb-3 d-flex align-items-center gap-2">
+                <label class="form-label mb-0">Name:</label>
+
+                <input
+                  type="text"
+                  id="customer-name"
+                  class="form-control"
+                  placeholder="Enter customer name"
+                />
+              </div>
+
+              <button
+                type="button"
+                class="btn btn-primary btn-sm mt-3 px-4"
+                onclick="placeOrder()"
+              >
+                Place Order
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- RIGHT COLUMN -->
+        <div class="col-lg-4">
+          <h3 class="display-6 text-center">
+            <span class="badge section-badge">Track Order</span>
+          </h3>
+
+          <div class="row gy-4 mb-5" id="order-list"></div>
+        </div>
+      </div>
+    </div>
     <!-- Link Bootstrap JavaScript files -->
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
