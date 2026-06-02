@@ -38,7 +38,7 @@
           <h3 class="display-6 text-center">
             <span class="badge section-badge">Create Order</span>
           </h3>
-          <div class="card shadow-sm p-4 mb-5">
+          <div class="card shadow-sm p-4 mb-5 order-card">
             <form id="create-order-form">
               <p class="text-muted mb-4 text-center">
                 Click items below to add them to your order
@@ -135,7 +135,7 @@
               <h5>Delivery: $4.00</h5>
               <h5>Total: $<span id="delivery-total">0.00</span></h5>
 
-              <div class="mb-3 d-flex align-items-center gap-2">
+              <div class="mb-3 d-flex align-items-center gap-2 name">
                 <label class="form-label mb-0">Name:</label>
 
                 <input
@@ -145,14 +145,16 @@
                   placeholder="Enter customer name"
                 />
               </div>
-
-              <button
-                type="button"
-                class="btn btn-primary btn-sm mt-3 px-4"
-                onclick="placeOrder()"
-              >
-                Place Order
-              </button>
+              <div class="d-flex justify-content-center">
+                <button
+                  type="button"
+                  class="btn btn-lg btn-primary mt-3 px-4"
+                  id="place-order"
+                  onclick="placeOrder()"
+                >
+                  Place Order
+                </button>
+              </div>
             </form>
           </div>
         </div>

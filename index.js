@@ -49,20 +49,20 @@ const orderBeingPrepared = (orderNo) =>
   new Promise((resolve, reject) => {
     setTimeout(() => {
       document.getElementById(`order-status-img-${orderNo}`).src =
-        "assets/order-being-prepared.gif";
+        "assets/images/espresso-maker.gif";
       document.getElementById(`order-status-text-${orderNo}`).innerText =
-        "Order is being prepared";
+        "Order being prepared";
       resolve(orderNo);
-    }, 2000);
+    }, 5000);
   });
 
 const orderPrepared = (orderNo) =>
   new Promise((resolve, reject) => {
     setTimeout(() => {
       document.getElementById(`order-status-img-${orderNo}`).src =
-        "assets/order-prepared.gif";
+        "assets/images/coffee.gif";
       document.getElementById(`order-status-text-${orderNo}`).innerText =
-        "Order prepared";
+        "Order ready";
       resolve(orderNo);
     }, 10000);
   });
@@ -71,9 +71,9 @@ const orderHandedOver = (orderNo) =>
   new Promise((resolve, reject) => {
     setTimeout(() => {
       document.getElementById(`order-status-img-${orderNo}`).src =
-        "assets/order-handed-over.gif";
+        "assets/images/paper-bag.gif";
       document.getElementById(`order-status-text-${orderNo}`).innerText =
-        "Order handed over to the delivery person";
+        "Order picked up";
       resolve(orderNo);
     }, 5000);
   });
@@ -82,33 +82,33 @@ const orderOnTheWay = (orderNo) =>
   new Promise((resolve, reject) => {
     setTimeout(() => {
       document.getElementById(`order-status-img-${orderNo}`).src =
-        "assets/order-on-the-way.gif";
+        "assets/images/scooter.gif";
       document.getElementById(`order-status-text-${orderNo}`).innerText =
-        "Order is on the way";
+        "Order on the way";
       resolve(orderNo);
-    }, 3000);
+    }, 5000);
   });
 
 const orderReachedDestination = (orderNo) =>
   new Promise((resolve, reject) => {
     setTimeout(() => {
       document.getElementById(`order-status-img-${orderNo}`).src =
-        "assets/order-reached-destination.gif";
+        "assets/images/building.gif";
       document.getElementById(`order-status-text-${orderNo}`).innerText =
-        `Order reached its destination`;
+        `Order at destination`;
       resolve(orderNo);
-    }, 8000);
+    }, 10000);
   });
 
 const orderDelivered = (orderNo) =>
   new Promise((resolve, reject) => {
     setTimeout(() => {
       document.getElementById(`order-status-img-${orderNo}`).src =
-        "assets/order-delivered.gif";
+        "assets/images/heart.gif";
       document.getElementById(`order-status-text-${orderNo}`).innerText =
-        "Order has been delivered";
+        "Order delivered";
       resolve(orderNo);
-    }, 4000);
+    }, 5000);
   });
 
 const placeOrder = () => {
@@ -128,8 +128,10 @@ const placeOrder = () => {
 
   createOrderCard(customerName);
 
+  document.getElementById("customer-name").value = "";
+
   document.getElementById(`order-status-img-${orderNo}`).src =
-    "assets/order-confirmed.gif";
+    "assets/images/online-order.gif";
   document.getElementById(`order-status-text-${orderNo}`).innerText =
     "Order confirmed";
 
@@ -139,7 +141,7 @@ const placeOrder = () => {
     .then((orderNo) => orderOnTheWay(orderNo))
     .then((orderNo) => orderReachedDestination(orderNo))
     .then((orderNo) => orderDelivered(orderNo))
-    .then((orderNo) => console.log(`Order ID 2026050000${orderNo} processed!`))
+    .then((orderNo) => console.log(`Order ID 20260600${orderNo} processed!`))
     .catch(() => console.log("Something went wrong"));
 };
 
@@ -163,7 +165,11 @@ function createOrderCard(customerName) {
   cardBodyDiv.classList.add("card-body");
 
   const cardFooterDiv = document.createElement("div");
-  cardFooterDiv.classList.add("card-footer", "text-body-secondary");
+  cardFooterDiv.classList.add(
+    "card-footer",
+    "text-body-secondary",
+    "card-date",
+  );
   cardFooterDiv.innerText = new Date().toLocaleString();
 
   // Collect form details
@@ -198,16 +204,19 @@ function createOrderCard(customerName) {
     "d-flex",
     "justify-content-between",
     "fw-bold",
+    "text-start",
   );
 
   const deliveryTotal = total + 4;
 
   totalLi.innerHTML = `
   <div>
+    <div>Food Items</div>
     <div>Delivery</div>
     <div>Total</div>
   </div>
   <div>
+    <div>$${total.toFixed(2)}</div>
     <div>$4.00</div>
     <div>$${deliveryTotal.toFixed(2)}</div>
   </div>
@@ -253,12 +262,12 @@ function createOrderCard(customerName) {
 /*
   - Project: Order tracking app
     - Instantly: Order confirmed ✅
-    - After 2 seconds: Order is being prepared 🍜
+    - After 5 seconds: Order is being prepared 🍜
     - After 10 seconds: Order prepared 🎉
     - After 5 seconds: Order handed over to the delivery person 📦
-    - After 3 seconds: Order is on the way 🚴
-    - After 8 seconds: Order reached it's destination 📍
-    - After 4 seconds: Order has been delivered 😋
+    - After 5 seconds: Order is on the way 🚴
+    - After 10 seconds: Order reached its destination 📍
+    - After 5 seconds: Order has been delivered 😋
 
-    Total order processing time: 2+10+5+3+8+4 = 32 seconds
+    Total order processing time: 5+10+5+5+10+5 = 40 seconds
 */
