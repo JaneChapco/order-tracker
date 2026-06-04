@@ -7,6 +7,7 @@ body {
 .section-badge {
   background-color: #7b4f35;
   color: white;
+  margin-bottom: 15px;
 }
 
 .menu-item:hover {
